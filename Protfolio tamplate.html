@@ -1,0 +1,490 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stunning Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <style>
+/* Resetting margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #00bcd4, #1c1c1c); /* Cyan to black gradient */
+    color: #ffffff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    transition: background 0.3s ease;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00bcd4; /* Cyan color on hover */
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background: #ffffff;
+    margin: 4px 0;
+}
+
+/* Hero section styles */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: url('https://i.imghippo.com/files/QrNXY1724257042.jpg') center center/cover no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Slightly lighter overlay */
+    z-index: -1;
+}
+
+.hero-title {
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease-out;
+    background: -webkit-linear-gradient(45deg, #00bcd4, #1c1c1c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    margin: 20px 0;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero .btn {
+    padding: 15px 40px;
+    background: #00bcd4;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    margin-top: 30px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+}
+
+.hero .btn:hover {
+    background: #0097a7;
+    transform: scale(1.1);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    font-size: 30px;
+    color: #00bcd4;
+    animation: bounce 2s infinite;
+}
+
+/* About section styles */
+.about-section {
+    padding: 100px 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-section h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #00bcd4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Projects section styles */
+.projects-section {
+    padding: 100px 50px;
+    background: #1c1c1c;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.projects-section h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: #00bcd4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 300px;
+    margin: 15px;
+    background: #323232;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4);
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+/* Contact section styles */
+.contact-section {
+    padding: 100px 50px;
+    background: #1a1a1a;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.contact-section h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #00bcd4;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.contact-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.contact-section .contact-btn {
+    padding: 15px 40px;
+    background: #00bcd4;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+}
+
+.contact-section .contact-btn:hover {
+    background: #0097a7;
+    transform: scale(1.1);
+}
+
+/* Footer styles */
+footer {
+    padding: 30px;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+footer p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #00bcd4;
+}
+
+/* Keyframes for animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .about-section,
+    .projects-section,
+    .contact-section {
+        padding: 50px 20px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .navbar.active .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        top: 60px;
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+        </style>
+    <header id="header">
+        <nav class="navbar">
+            <div class="logo">MyPortfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1 class="hero-title">Welcome to My Creative World</h1>
+            <p class="hero-subtitle">Crafting Beautiful Web Experiences</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
+        <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+    </header>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>[About yourself]</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2>My Projects</h2>
+        <div class="project-gallery">
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://i.imghippo.com/files/bzOu31724257124.jpg');"></div>
+                <div class="project-info">
+                    <h3><a href="https://yourprojecturl"P>roject Title 1</a></h3>
+                    <p>A brief description of what this project is about.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://i.imghippo.com/files/bzOu31724257124.jpg');"></div>
+                <div class="project-info">
+                    <h3><a href="https://yourprojecturl"P>Project Title 2</a></h3>
+                    <p>A brief description of what this project is about.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img" style="background-image: url('https://i.imghippo.com/files/bzOu31724257124.jpg');"></div>
+                <div class="project-info">
+                    <h3><a href="https://yourprojecturl"P>Project Title 3</a></h3>
+                    <p>A brief description of what this project is about.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out if you want to collaborate on a project, or just say hi!</p>
+        <a href="mailto:someone@example.com" class="btn contact-btn">Get in Touch</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MyPortfolio. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navigation menu on mobile
+const hamburger = document.querySelector('.hamburger');
+const navbar = document.querySelector('.navbar');
+
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+});
+
+// Smooth scroll for links
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+        navbar.classList.remove('active');
+    });
+});
+
+// Change navbar background on scroll
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+// Dark mode toggle
+const darkModeToggle = document.createElement('button');
+darkModeToggle.textContent = 'Toggle Dark Mode';
+darkModeToggle.classList.add('dark-mode-toggle');
+document.body.appendChild(darkModeToggle);
+
+darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+    </script>
+</body>
+</html>
