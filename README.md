@@ -20,4 +20,4 @@ Designed with **3D hover effects, glowing gradients, glassmorphism, dark mode to
 
 1. Clone this repo:
    ```bash
-   git clone https://github.com/your-username/premium-portfolio.git
+   git clone https://github.com/sharek32/portfoliotemplate.git
